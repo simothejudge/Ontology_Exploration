@@ -1,3 +1,4 @@
+TODO: need to double check the files, be sure they are updated with the most recent version. Add other redundancies?
 # Pizza-Ontology #
 
 ## Inconsistencies ##
