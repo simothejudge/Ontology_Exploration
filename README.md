@@ -1,4 +1,3 @@
-TODO: need to double check the files, be sure they are updated with the most recent version. Add other redundancies?
 # Pizza-Ontology #
 
 ## Inconsistencies ##
@@ -54,5 +53,5 @@ The property hasBase is defined as functional and inverse functional. It means t
 
 
 ## Additional Redundancies created ##
-Notice that the statements were added to the "cleaned" ontology: firstly, the redundancies found were deleted and then some different, additional statements were added as new redundancies. For every redundant statement, a comment was made to explain why the statement is considered redundant.
+Notice that the statements were added to a cleaner ontology: firstly, some of the redundancies found were deleted and then some different, additional statements were added as new redundancies. For every redundant statement, a comment was made to explain why the statement is considered redundant.
 
