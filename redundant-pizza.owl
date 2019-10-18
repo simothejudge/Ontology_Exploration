@@ -1,0 +1,76 @@
+Prefix(:=<http://www.semanticweb.org/simona/ontologies/2019/9/untitled-ontology-6>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/simona/ontologies/2019/9/untitled-ontology-6>
+Import(<http://www.co-ode.org/ontologies/pizza/2.0.0>)
+
+
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://www.co-ode.org/ontologies/pizza/pizza.owl#hasBase> (<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasBase>)
+
+FunctionalObjectProperty(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasBase>)
+InverseFunctionalObjectProperty(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasBase>)
+
+# Object Property: <http://www.co-ode.org/ontologies/pizza/pizza.owl#isBaseOf> (<http://www.co-ode.org/ontologies/pizza/pizza.owl#isBaseOf>)
+
+FunctionalObjectProperty(<http://www.co-ode.org/ontologies/pizza/pizza.owl#isBaseOf>)
+InverseFunctionalObjectProperty(<http://www.co-ode.org/ontologies/pizza/pizza.owl#isBaseOf>)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#American> (American)
+
+SubClassOf(Annotation(rdfs:comment "This is a redundant statement. We already specify that American Pizza has topping MozzarellaTopping, whcih is a subclass of CheeseTopping. It is redundant to declare that American Pizza has a generic cheese on top (more generic class), if we already say that it has Mozzarella (more specific class) and we know that Mozzarella is a cheese topping (MozzarellaTopping is a subclass of CheeseTopping).") <http://www.co-ode.org/ontologies/pizza/pizza.owl#American> ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping>))
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#AmericanHot> (AmericanaPicante)
+
+SubClassOf(Annotation(rdfs:comment "Redundant Statement. The hot ingredient (hot green pepper) already says in its definition that it is hot. By saying that this pizza has this ingredient, we are assuming that this pizza is hot because this ingredient is hot. No need to specify it here.") <http://www.co-ode.org/ontologies/pizza/pizza.owl#AmericanHot> ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping> ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasSpiciness> <http://www.co-ode.org/ontologies/pizza/pizza.owl#Hot>)))
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#Capricciosa> (Capricciosa)
+
+SubClassOf(Annotation(rdfs:comment "redundant statement: it is already specified that Capricciosa has  HamTopping, there is no need to declare that it has a generic Meat Topping.") <http://www.co-ode.org/ontologies/pizza/pizza.owl#Capricciosa> ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping>))
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping> (CoberturaDeQueijo)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetarianTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#MixedSeafoodTopping> (CoberturaDeFrutosDoMarMistos)
+
+SubClassOf(Annotation(rdfs:comment "another example of redundant statement: the parent class SeafoodTopping is already stating that this topping is medium spicy, so there is no need to specify it in the subclasses becuase they would inherit this property from the parent.") <http://www.co-ode.org/ontologies/pizza/pizza.owl#MixedSeafoodTopping> ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasSpiciness> <http://www.co-ode.org/ontologies/pizza/pizza.owl#Mild>))
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#NonVegetarianPizza> (PizzaNaoVegetariana)
+
+EquivalentClasses(Annotation(rdfs:comment "Example of redundant statement, specifying the opposite of VegetarianPizza") <http://www.co-ode.org/ontologies/pizza/pizza.owl#NonVegetarianPizza> ObjectIntersectionOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza> ObjectUnionOf(ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#FishTopping>) ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping>))))
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#ParmaHamTopping> (ParmaHamTopping)
+
+SubClassOf(Annotation(rdfs:comment "This is a redundant statement, ParmHamTopping is a subclass of HamTopping, which is a subclass of MeatTopping. Therefore, ParmHamTopping is a subclass of MeatTopping by inference.") <http://www.co-ode.org/ontologies/pizza/pizza.owl#ParmaHamTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza> (Pizza)
+
+SubClassOf(Annotation(rdfs:comment "This statement is actually redundant for the way the ontology is currently built. Real Italians would argue that a Pizza without any topping is actually a Focaccia, therefore it should be specified that Pizza must have at least one topping and a base.") <http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza> ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#PizzaTopping>))
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#RealItalianPizza> (PizzaItalianaReal)
+
+EquivalentClasses(<http://www.co-ode.org/ontologies/pizza/pizza.owl#RealItalianPizza> ObjectIntersectionOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#Pizza> ObjectHasValue(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasCountryOfOrigin> <http://www.co-ode.org/ontologies/pizza/pizza.owl#Italy>)))
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#RealItalianPizza> <http://www.co-ode.org/ontologies/pizza/pizza.owl#ThinAndCrispyPizza>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#RedOnionTopping> (CoberturaDeCebolaVermelha)
+
+SubClassOf(Annotation(rdfs:comment "This statement is redundant because the OnionTopping is already a subclass of things that are medium spicy. By being a subclass of OnionTopping, RedOnionTopping inerits the property of its parent. All kind of onion have a medium spiciness, if red onion is an onion and onion is spicy, there is no need to specify that also red onion is spicy.") <http://www.co-ode.org/ontologies/pizza/pizza.owl#RedOnionTopping> ObjectSomeValuesFrom(<http://www.co-ode.org/ontologies/pizza/pizza.owl#hasSpiciness> <http://www.co-ode.org/ontologies/pizza/pizza.owl#Medium>))
+
+
+
+)
