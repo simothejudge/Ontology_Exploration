@@ -1,4 +1,5 @@
 # Pizza-Ontology #
+This project is part of the Knowledge Representation course at the Vrije University in Amsterdam - 2019.
 
 ## Inconsistencies ##
 
